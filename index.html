@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackthorn Company - Proactive Security Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>BLACKTHORN</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-subtitle">FORTIFY YOUR WORLD</h1>
+                <h2 class="hero-title">Proactive Security Solutions for a Complex World</h2>
+                <p class="hero-description">
+                    We specialize in advanced threat detection, digital defense, and personal security to protect your assets and privacy.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Explore Our Defenses</a>
+                    <a href="#" class="btn btn-secondary" data-open-modal="consultation">Get Consultation</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="security-shield">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Capabilities</h2>
+                <p>Our expertise is your shield. We offer a trifecta of protection to ensure your total security.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Personal Protection</h3>
+                    <p>Elite personnel and strategic protection to safeguard individuals and physical assets from all threats.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <p>Fortifying your digital infrastructure against cyber threats and data breaches with proactive measures.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Private Investigation</h3>
+                    <p>Deep-dive investigations to uncover hidden risks and provide actionable intelligence for your protection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Flexible Security Plans</h2>
+                <p>Choose a plan that fits your risk profile. All plans include 24/7 support and rapid incident response.</p>
+            </div>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Essential</h3>
+                        <span class="price">$499<span>/mo</span></span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i>Threat Assessment (Quarterly)</li>
+                        <li><i class="fas fa-check"></i>Basic Cyber Monitoring</li>
+                        <li><i class="fas fa-check"></i>Email Support</li>
+                    </ul>
+                    <button class="btn btn-primary plan-cta" data-open-modal="consultation">Start Essential</button>
+                </div>
+                <div class="plan-card plan-featured">
+                    <div class="plan-badge">Popular</div>
+                    <div class="plan-header">
+                        <h3>Professional</h3>
+                        <span class="price">$1,499<span>/mo</span></span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i>Threat Assessment (Monthly)</li>
+                        <li><i class="fas fa-check"></i>24/7 Cyber Defense SIM</li>
+                        <li><i class="fas fa-check"></i>On-site Response (Priority)</li>
+                        <li><i class="fas fa-check"></i>Dedicated Account Manager</li>
+                    </ul>
+                    <button class="btn btn-primary plan-cta" data-open-modal="consultation">Start Professional</button>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Executive</h3>
+                        <span class="price">Custom</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i>Personal Protection Detail</li>
+                        <li><i class="fas fa-check"></i>Advanced OSINT & HUMINT</li>
+                        <li><i class="fas fa-check"></i>Red Team Exercises</li>
+                        <li><i class="fas fa-check"></i>Discreet Global Coverage</li>
+                    </ul>
+                    <button class="btn btn-primary plan-cta" data-open-modal="consultation">Request Quote</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trusted by Leaders</h2>
+                <p>What our clients say about partnering with Blackthorn.</p>
+            </div>
+            <div class="testimonial-slider">
+                <button class="ts-nav ts-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="ts-track">
+                    <article class="testimonial" aria-roledescription="slide">
+                        <p>“Blackthorn’s team prevented a major breach and trained our staff. Professional, fast, and discreet.”</p>
+                        <div class="t-meta">
+                            <span class="t-name">COO, Logistics Firm</span>
+                        </div>
+                    </article>
+                    <article class="testimonial" aria-roledescription="slide">
+                        <p>“Their threat assessments are actionable. We adjusted policies and saw immediate risk reduction.”</p>
+                        <div class="t-meta">
+                            <span class="t-name">CISO, Fintech</span>
+                        </div>
+                    </article>
+                    <article class="testimonial" aria-roledescription="slide">
+                        <p>“Personal protection was exceptional and respectful of privacy. We felt safe at every engagement.”</p>
+                        <div class="t-meta">
+                            <span class="t-name">Founder, Family Office</span>
+                        </div>
+                    </article>
+                </div>
+                <button class="ts-nav ts-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="ts-dots" aria-label="testimonial pagination" role="tablist"></div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers about our engagement model, privacy, and response times.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        How quickly can your team respond to incidents?
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our rapid-response team is available 24/7. For active clients, first contact occurs within 15 minutes; new clients within 60 minutes.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Do you operate internationally?
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. We maintain vetted partners and logistics for global operations while ensuring compliance with local regulations.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        How do you protect client privacy?
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Strict NDAs, compartmentalized access, and zero-trust workflows. We collect only what’s necessary and encrypt at rest and in transit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <div class="newsletter-card">
+                <div class="newsletter-text">
+                    <h3>Stay Ahead of Threats</h3>
+                    <p>Monthly briefings with practical guidance and threat intelligence.</p>
+                </div>
+                <form id="newsletterForm" class="newsletter-form">
+                    <input type="email" placeholder="Your email" aria-label="Email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Expertise</h2>
+                <p>Comprehensive security solutions backed by years of experience and cutting-edge technology.</p>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="expertise-content">
+                        <h3>Information Gathering</h3>
+                        <p>Advanced intelligence collection and analysis to identify potential threats before they materialize.</p>
+                    </div>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="expertise-content">
+                        <h3>Threat Assessment</h3>
+                        <p>Comprehensive evaluation of security risks and vulnerabilities with detailed mitigation strategies.</p>
+                    </div>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <div class="expertise-content">
+                        <h3>Digital Protection</h3>
+                        <p>State-of-the-art cybersecurity measures to protect your digital assets and sensitive information.</p>
+                    </div>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="expertise-content">
+                        <h3>Physical Protection</h3>
+                        <p>Professional security personnel and physical security measures to protect people and property.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Blackthorn Company</h2>
+                    <p>Blackthorn Company is an independent security firm that provides comprehensive protection services. Our mission is to deliver proactive security solutions that adapt to the evolving threats of our complex world.</p>
+                    <p>With expertise in information gathering, threat assessment, and both physical and digital protection, we offer a complete security ecosystem designed to safeguard your interests.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>100+</h3>
+                            <p>Successful Operations</p>
+                        </div>
+                        <div class="stat">
+                            <h3>24/7</h3>
+                            <p>Support Available</p>
+                        </div>
+                        <div class="stat">
+                            <h3>99%</h3>
+                            <p>Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="security-grid">
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Ready to fortify your security? Contact us for a confidential consultation.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@blackthorncompany.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Availability</h4>
+                            <p>24/7 Emergency Response</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="">Select Service</option>
+                            <option value="personal">Personal Protection</option>
+                            <option value="cyber">Cybersecurity</option>
+                            <option value="investigation">Private Investigation</option>
+                            <option value="consultation">Security Consultation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BLACKTHORN</h3>
+                    <p>Proactive security solutions for a complex world.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Personal Protection</a></li>
+                        <li><a href="#services">Cybersecurity</a></li>
+                        <li><a href="#services">Private Investigation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#expertise">Expertise</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Blackthorn Company. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Cookie Consent -->
+    <div id="cookieConsent" class="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent">
+        <div class="cookie-content">
+            <p>We use cookies to improve your experience and analyze traffic. By using this site, you agree to our privacy policy.</p>
+            <button id="acceptCookies" class="btn btn-primary">Accept</button>
+        </div>
+    </div>
+
+    <!-- Consultation Modal -->
+    <div id="consultationModal" class="modal-overlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <h3 id="modalTitle">Request a Confidential Consultation</h3>
+            <form id="modalForm" class="modal-form">
+                <div class="form-group"><input type="text" placeholder="Full Name" required></div>
+                <div class="form-group"><input type="email" placeholder="Email" required></div>
+                <div class="form-group"><textarea rows="4" placeholder="Briefly describe your security needs" required></textarea></div>
+                <button type="submit" class="btn btn-primary">Send Request</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
