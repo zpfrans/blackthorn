@@ -304,6 +304,9 @@ body {
     line-height: 1.6;
 }
 
+.service-actions { margin-top: 1.25rem; }
+.capabilities-cta-wrap { text-align: center; margin-top: 2.5rem; }
+
 /* Expertise Section */
 .expertise {
     padding: 6rem 0;

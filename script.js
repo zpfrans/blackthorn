@@ -388,7 +388,7 @@ function initModal() {
 
 // Scrollspy active nav link
 function updateActiveNavLink() {
-    const sections = ['home','services','expertise','about','pricing','testimonials','faq','contact'];
+    const sections = ['home','services','expertise','about','testimonials','faq','contact'];
     const links = document.querySelectorAll('.nav-menu a');
     const fromTop = window.scrollY + 120;
     let activeId = sections[0];

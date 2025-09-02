@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule a Strategy Call - Blackthorn</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="color: inherit; text-decoration: none;">BLACKTHORN</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#expertise">Expertise</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div id="scrollProgress"></div>
+
+    <main class="schedule">
+        <div class="container">
+            <div class="section-header" style="padding-top: 120px;">
+                <h2>Schedule a Strategy Call</h2>
+                <p>Tell us your focus area. We’ll arrange a confidential call to align on scope and terms.</p>
+            </div>
+
+            <div class="schedule-layout">
+                <section class="schedule-summary">
+                    <div class="summary-card">
+                        <h3><i class="fas fa-briefcase"></i> Selected Capability</h3>
+                        <p id="selectedService">General Consultation</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3><i class="fas fa-shield-alt"></i> What to Expect</h3>
+                        <ul>
+                            <li>15–30 minute discovery call</li>
+                            <li>Define objectives and constraints</li>
+                            <li>Outline next steps and engagement model</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="schedule-form-wrap">
+                    <form id="scheduleForm" class="contact-form">
+                        <div class="form-group">
+                            <input id="fullName" type="text" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input id="email" type="email" placeholder="Work Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="serviceSelect" required>
+                                <option value="">Select Capability</option>
+                                <option value="personal">Personal Protection</option>
+                                <option value="cyber">Cybersecurity</option>
+                                <option value="investigation">Private Investigation</option>
+                                <option value="consultation">General Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input id="date" type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <input id="time" type="time" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="notes" placeholder="Briefly describe your objectives" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Request Meeting</button>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Blackthorn Company. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    (function() {
+        const params = new URLSearchParams(window.location.search);
+        const svc = params.get('service');
+        const map = { personal: 'Personal Protection', cyber: 'Cybersecurity', investigation: 'Private Investigation' };
+        const label = map[svc] || 'General Consultation';
+        const selectedEl = document.getElementById('selectedService');
+        const select = document.getElementById('serviceSelect');
+        if (selectedEl) selectedEl.textContent = label;
+        if (select && svc && select.querySelector(`option[value="${svc}"]`)) select.value = svc;
+
+        const form = document.getElementById('scheduleForm');
+        form?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const service = document.getElementById('serviceSelect').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const notes = document.getElementById('notes').value.trim();
+            if (!name || !email || !service || !date || !time || !notes) {
+                showNotification('Please fill in all fields.', 'error');
+                return;
+            }
+            if (!isValidEmail(email)) {
+                showNotification('Please enter a valid email address.', 'error');
+                return;
+            }
+            showNotification('Meeting request sent. We will confirm via email shortly.', 'success');
+            this.reset();
+        });
+    })();
+    </script>
+</body>
+</html>
+
+
