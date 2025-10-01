@@ -674,6 +674,19 @@ body {
 
 /* Pricing */
 .pricing { padding: 6rem 0; background: #030712; }
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+.price-card { background: rgba(227,228,228,.02); border: 1px solid rgba(227,228,228,.1); border-radius: 12px; padding: 2rem 1.75rem 2.5rem; position: relative; display: flex; flex-direction: column; transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease; }
+.price-card:hover { border-color: rgba(100,105,218,.35); transform: translateY(-6px); box-shadow: 0 14px 40px -8px rgba(100,105,218,.25); }
+.price-card h3 { font-weight: 600; margin-bottom: .75rem; color: #e3e4e4; font-size: 1.2rem; }
+.price-card .price { font-size: 2.1rem; font-weight: 700; margin: .5rem 0 1rem; line-height: 1; }
+.price-card .price span { font-size: .85rem; font-weight: 500; color: #525966; margin-left: .35rem; }
+.price-features { list-style: none; margin: 0 0 1.4rem; padding: 0; }
+.price-features li { color: #525966; margin: .45rem 0; font-size: .9rem; display: flex; align-items: flex-start; gap: .5rem; }
+.price-cta { margin-top: auto; }
+.price-card.featured { background: linear-gradient(180deg, rgba(100,105,218,.12), rgba(100,105,218,.02)); border-color: rgba(100,105,218,.45); }
+.price-card .badge { position: absolute; top: 14px; right: 14px; background: #6469da; color: #e3e4e4; font-size: .65rem; padding: .35rem .55rem; border-radius: 999px; letter-spacing: .5px; text-transform: uppercase; }
+.pricing-notes { margin-top: 2.5rem; font-size: .85rem; line-height: 1.5; color: #525966; }
+.pricing-notes a { color: #6469da; }
 .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
 .plan-card { background: rgba(227,228,228,.02); border: 1px solid rgba(227,228,228,.1); border-radius: 12px; padding: 2rem; position: relative; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
 .plan-card:hover { transform: translateY(-6px); border-color: rgba(100,105,218,.3); box-shadow: 0 14px 40px rgba(100,105,218,.15); }

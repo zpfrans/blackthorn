@@ -14,6 +14,7 @@ A modern, professional website for Blackthorn Company - an independent security 
 ### Core Sections
 - **Hero Section**: Compelling headline with call-to-action buttons
 - **Services**: Three main service offerings (Personal Protection, Cybersecurity, Private Investigation)
+- **Pricing**: Transparent starting rates localized in Philippine Pesos (₱) with clear scope notes
 - **Expertise**: Four key areas of expertise (Information Gathering, Threat Assessment, Digital Protection, Physical Protection)
 - **About**: Company information with animated statistics
 - **Contact**: Contact form with validation and contact information
@@ -24,6 +25,7 @@ A modern, professional website for Blackthorn Company - an independent security 
 - **Form Validation**: Contact form with email validation and notifications
 - **Animations**: Scroll-triggered animations and hover effects
 - **Counter Animation**: Animated statistics in the About section
+- **FAQ Accordion**: Expanded categorized FAQ (Services, Threat Assessment, Emergency Response, Privacy & Communication)
 
 ### Technical Features
 - **Modern CSS**: CSS Grid, Flexbox, and modern CSS features
@@ -111,9 +113,21 @@ To change the color scheme, modify the CSS variables in `styles.css`:
 ## 📞 Contact Information
 
 The website includes placeholder contact information:
-- **Phone**: +1 (555) 123-4567
+- **Phone (Primary)**: +63 2 8745 2100
+- **24/7 Emergency Hotline**: +63 917 800 2477
 - **Email**: info@blackthorncompany.com
 - **Availability**: 24/7 Emergency Response
+
+## 💰 Pricing Transparency
+
+The `Pricing` section presents baseline starting tiers in Philippine Pesos (₱) for:
+
+- Cybersecurity Monitoring (monthly retainer)
+- Comprehensive Security Suite bundle
+- Private Investigation (engagement-based)
+- Executive / Personal Protection (daily per operative)
+
+Notes clarify VAT, travel/logistics surcharges outside Metro Manila, and scope adjustments for complex or high-risk environments. All engagements begin with a free consultation.
 
 ## 🔒 Security Features
 
