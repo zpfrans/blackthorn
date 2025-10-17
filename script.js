@@ -52,17 +52,24 @@ if (contactForm) {
         const formData = new FormData(this);
         const name = this.querySelector('input[type="text"]').value;
         const email = this.querySelector('input[type="email"]').value;
+        const mobile = this.querySelector('input[type="tel"]').value;
         const service = this.querySelector('select').value;
         const message = this.querySelector('textarea').value;
         
         // Basic validation
-        if (!name || !email || !service || !message) {
+        if (!name || !email || !mobile || !service || !message) {
             showNotification('Please fill in all fields.', 'error');
             return;
         }
         
         if (!isValidEmail(email)) {
             showNotification('Please enter a valid email address.', 'error');
+            return;
+        }
+        
+        const mobileDigits = mobile.replace(/\D/g, '');
+        if (mobileDigits.length < 10) {
+            showNotification('Please enter a valid mobile number.', 'error');
             return;
         }
         
