@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Bootstrap (for select styling) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1HIQZ6jIW3" crossorigin="anonymous">
+    <!-- Flag icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.7/css/flag-icon.min.css" integrity="sha512-0lQf0F2mYV6q1YpD5w0+XU0q0k8c3vri3vZ8vQx1J9t5sZK6u6o3rQw9n1QZJH2Y6uQ0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0/dist/css/bootstrap-select.min.css">
 </head>
 <body>
     <nav class="navbar">
@@ -62,6 +67,83 @@
                         <div class="form-group">
                             <input id="email" type="email" placeholder="Work Email" required>
                         </div>
+                        <div class="form-group contact-phone-row">
+                            <select id="schedCountryCode" class="form-select country-select" aria-label="Country code" required>
+                                <option value="+1">🇺🇸 +1</option>
+                                <option value="+7">🇷🇺 +7</option>
+                                <option value="+20">🇪🇬 +20</option>
+                                <option value="+27">🇿🇦 +27</option>
+                                <option value="+30">🇬🇷 +30</option>
+                                <option value="+31">🇳🇱 +31</option>
+                                <option value="+32">🇧🇪 +32</option>
+                                <option value="+33">🇫🇷 +33</option>
+                                <option value="+34">�� +34</option>
+                                <option value="+36">�🇭🇺 +36</option>
+                                <option value="+39">🇮🇹 +39</option>
+                                <option value="+40">🇷🇴 +40</option>
+                                <option value="+41">�� +41</option>
+                                <option value="+43">🇦🇹 +43</option>
+                                <option value="+44">🇬🇧 +44</option>
+                                <option value="+45">🇩🇰 +45</option>
+                                <option value="+46">🇸🇪 +46</option>
+                                <option value="+47">🇳🇴 +47</option>
+                                <option value="+48">🇵🇱 +48</option>
+                                <option value="+49">🇩🇪 +49</option>
+                                <option value="+52">🇲🇽 +52</option>
+                                <option value="+53">🇨🇺 +53</option>
+                                <option value="+54">🇦🇷 +54</option>
+                                <option value="+55">🇧🇷 +55</option>
+                                <option value="+56">🇨🇱 +56</option>
+                                <option value="+57">🇨🇴 +57</option>
+                                <option value="+58">🇻🇪 +58</option>
+                                <option value="+60">🇲🇾 +60</option>
+                                <option value="+61">🇦🇺 +61</option>
+                                <option value="+62">🇮� +62</option>
+                                <option value="+63" selected>🇵🇭 +63</option>
+                                <option value="+64">�🇳🇿 +64</option>
+                                <option value="+65">🇸🇬 +65</option>
+                                <option value="+66">🇹🇭 +66</option>
+                                <option value="+81">🇯🇵 +81</option>
+                                <option value="+82">🇰🇷 +82</option>
+                                <option value="+84">🇻🇳 +84</option>
+                                <option value="+86">🇨🇳 +86</option>
+                                <option value="+90">🇹🇷 +90</option>
+                                <option value="+91">�� +91</option>
+                                <option value="+92">�🇵🇰 +92</option>
+                                <option value="+93">🇦🇫 +93</option>
+                                <option value="+94">🇱🇰 +94</option>
+                                <option value="+95">🇲🇲 +95</option>
+                                <option value="+98">🇮🇷 +98</option>
+                                <option value="+350">🇬🇮 +350</option>
+                                <option value="+351">🇵🇹 +351</option>
+                                <option value="+352">�� +352</option>
+                                <option value="+353">🇮🇪 +353</option>
+                                <option value="+354">🇮🇸 +354</option>
+                                <option value="+355">🇦🇱 +355</option>
+                                <option value="+356">��🇹 +356</option>
+                                <option value="+357">�🇾 +357</option>
+                                <option value="+358">🇫🇮 +358</option>
+                                <option value="+359">🇧🇬 +359</option>
+                                <option value="+370">🇱🇹 +370</option>
+                                <option value="+371">🇱🇻 +371</option>
+                                <option value="+372">🇪🇪 +372</option>
+                                <option value="+373">🇲🇩 +373</option>
+                                <option value="+374">🇦🇲 +374</option>
+                                <option value="+375">🇧🇾 +375</option>
+                                <option value="+376">🇦🇩 +376</option>
+                                <option value="+377">🇲🇨 +377</option>
+                                <option value="+378">🇸🇲 +378</option>
+                                <option value="+380">🇺🇦 +380</option>
+                                <option value="+381">🇷� +381</option>
+                                <option value="+385">🇭🇷 +385</option>
+                                <option value="+386">🇸🇮 +386</option>
+                                <option value="+387">🇧🇦 +387</option>
+                                <option value="+389">🇲🇰 +389</option>
+                                <option value="+420">🇨🇿 +420</option>
+                                <option value="+421">🇸🇰 +421</option>
+                            </select>
+                            <input id="schedMobile" type="tel" placeholder="Mobile number (no country code)" required>
+                        </div>
                         <div class="form-group">
                             <select id="serviceSelect" required>
                                 <option value="">Select Capability</option>
@@ -95,6 +177,9 @@
         </div>
     </footer>
 
+    <!-- jQuery and bootstrap-select (for enhanced country select with flags) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0/dist/js/bootstrap-select.min.js"></script>
     <script src="script.js"></script>
     <script>
     (function() {
@@ -112,11 +197,13 @@
             e.preventDefault();
             const name = document.getElementById('fullName').value.trim();
             const email = document.getElementById('email').value.trim();
+            const countryCode = document.getElementById('schedCountryCode')?.value || '';
+            const mobile = document.getElementById('schedMobile')?.value.trim() || '';
             const service = document.getElementById('serviceSelect').value;
             const date = document.getElementById('date').value;
             const time = document.getElementById('time').value;
             const notes = document.getElementById('notes').value.trim();
-            if (!name || !email || !service || !date || !time || !notes) {
+            if (!name || !email || !mobile || !service || !date || !time || !notes) {
                 showNotification('Please fill in all fields.', 'error');
                 return;
             }
@@ -124,6 +211,13 @@
                 showNotification('Please enter a valid email address.', 'error');
                 return;
             }
+
+            const mobileDigits = mobile.replace(/\D/g, '');
+            if (!isValidPhone(countryCode, mobileDigits)) {
+                showNotification('Please enter a valid mobile number for the selected country.', 'error');
+                return;
+            }
+
             showNotification('Meeting request sent. We will confirm via email shortly.', 'success');
             this.reset();
         });
