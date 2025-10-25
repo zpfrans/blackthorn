@@ -13,6 +13,13 @@ body {
     overflow-x: hidden;
 }
 
+/* CSS variable for navbar height and scroll-padding fallback so anchored sections sit below fixed navbar */
+:root { --nav-height: 72px; }
+html { scroll-padding-top: var(--nav-height); }
+
+/* Ensure anchor scrolling accounts for fixed navbar in supporting browsers */
+html { scroll-padding-top: 84px; }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -666,6 +673,40 @@ body {
         padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
     }
+}
+
+/* Contact phone row styles: country code select + phone input */
+.contact-phone-row {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+.contact-phone-row select {
+    width: 42%;
+    max-width: 160px;
+    padding: 0.85rem;
+    border-radius: 6px;
+}
+.contact-phone-row input[type="tel"] {
+    flex: 1;
+}
+/* Make long country lists comfortable to use on desktop - native select dropdowns are scrollable.
+   Add a little visual width and ensure emojis don't wrap. */
+.country-select {
+    white-space: nowrap;
+    max-width: 220px;
+}
+.country-select option { white-space: nowrap; }
+
+/* Flag image used inside enhanced selects (bootstrap-select/data-content) */
+.flag-img {
+    width: 24px;
+    height: 18px;
+    object-fit: cover;
+    vertical-align: middle;
+    margin-right: 8px;
+    border-radius: 2px;
+    display: inline-block;
 }
 
 /* ====== Added Features Styles ====== */

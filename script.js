@@ -15,19 +15,51 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
     });
 });
 
-// Smooth scrolling for navigation links
+
+// Smooth scrolling for navigation links with offset for fixed navbar
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        // ignore empty anchors or modal openers
+        const href = this.getAttribute('href');
+        if (!href || href === '#' || this.hasAttribute('data-open-modal')) return;
+
+        const target = document.querySelector(href);
+        if (!target) return;
+
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+
+        // Close mobile nav first so we measure the stable header height
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        if (navMenu && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            hamburger?.classList.remove('active');
         }
+
+        // Measure header height using .nav-container (doesn't include expanded mobile menu)
+        const navContainer = document.querySelector('.nav-container');
+        const nav = document.querySelector('.navbar');
+        const navHeight = navContainer ? navContainer.offsetHeight : (nav ? nav.offsetHeight : 72);
+
+        // Compute target top position and offset by navbar height + small gap
+        const targetY = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
+
+        // Update the URL hash without jumping
+        if (history.replaceState) history.replaceState(null, '', href);
     });
 });
+
+// Keep CSS variable in-sync with navbar height for browsers that support scroll-padding
+function updateNavCssVar() {
+    const nav = document.querySelector('.navbar');
+    if (!nav) return;
+    document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+}
+window.addEventListener('resize', updateNavCssVar);
+window.addEventListener('load', updateNavCssVar);
+document.addEventListener('DOMContentLoaded', updateNavCssVar);
 
 // Navbar background change on scroll
 window.addEventListener('scroll', () => {
@@ -47,32 +79,42 @@ const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
+
         // Get form data
-        const formData = new FormData(this);
-        const name = this.querySelector('input[type="text"]').value;
-        const email = this.querySelector('input[type="email"]').value;
-        const mobile = this.querySelector('input[type="tel"]').value;
+        const name = this.querySelector('input[type="text"]').value.trim();
+        const email = this.querySelector('#contactEmail')?.value.trim() || this.querySelector('input[type="email"]').value.trim();
+        const countryCode = this.querySelector('#countryCode')?.value || '';
+        let mobile = this.querySelector('#contactMobile')?.value.trim() || this.querySelector('input[type="tel"]').value.trim();
         const service = this.querySelector('select').value;
-        const message = this.querySelector('textarea').value;
-        
+        const message = this.querySelector('textarea').value.trim();
+
         // Basic validation
         if (!name || !email || !mobile || !service || !message) {
             showNotification('Please fill in all fields.', 'error');
             return;
         }
-        
+
         if (!isValidEmail(email)) {
             showNotification('Please enter a valid email address.', 'error');
             return;
         }
-        
-        const mobileDigits = mobile.replace(/\D/g, '');
-        if (mobileDigits.length < 10) {
-            showNotification('Please enter a valid mobile number.', 'error');
+
+        // Normalize mobile: remove non-digits, drop leading zero when paired with a country code
+        let mobileDigits = mobile.replace(/\D/g, '');
+        if (mobileDigits.startsWith('0') && countryCode.startsWith('+')) {
+            mobileDigits = mobileDigits.replace(/^0+/, '');
+        }
+
+        // Validate phone length (E.164 max 15 digits, min practical 7)
+        const fullDigits = (countryCode.replace(/\D/g, '') || '') + mobileDigits;
+        if (!isValidPhone(countryCode, mobileDigits) || fullDigits.length < 7 || fullDigits.length > 15) {
+            showNotification('Please enter a valid mobile number with country code.', 'error');
             return;
         }
-        
+
+        // Compose full international number for backend or display
+        const internationalNumber = `${countryCode}${mobileDigits}`;
+
         // Simulate form submission
         showNotification('Thank you for your message. We will get back to you soon.', 'success');
         this.reset();
@@ -83,6 +125,34 @@ if (contactForm) {
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+// Basic phone validation: ensures country code is present and local number has digits
+function isValidPhone(countryCode, localDigits) {
+    if (!countryCode || !/^\+\d{1,4}$/.test(countryCode)) return false;
+    if (!localDigits || !/^\d{4,15}$/.test(localDigits)) return false;
+
+    // Per-country rules (local number length without country code)
+    const rules = {
+        '+63': { min: 9, max: 10 },   // Philippines (e.g., 9178002477 -> 10)
+        '+1':  { min: 10, max: 10 },   // USA/Canada
+        '+44': { min: 9,  max: 10 },   // UK (without leading 0)
+        '+61': { min: 9,  max: 9  },   // Australia (9 digits after country code)
+        '+91': { min: 10, max: 10 },   // India
+        '+82': { min: 9,  max: 10 },   // South Korea
+        '+81': { min: 9,  max: 10 },   // Japan
+        '+852':{ min: 8,  max: 8  },   // Hong Kong
+        '+886':{ min: 9,  max: 9  },   // Taiwan
+        '+66': { min: 9,  max: 9  }    // Thailand
+    };
+
+    const rule = rules[countryCode];
+    if (!rule) {
+        // fallback: accept 4-15 digits
+        return localDigits.length >= 4 && localDigits.length <= 15;
+    }
+
+    return localDigits.length >= rule.min && localDigits.length <= rule.max;
 }
 
 // Notification system
@@ -179,7 +249,54 @@ document.addEventListener('DOMContentLoaded', () => {
     initNewsletter();
     // Modal
     initModal();
+    // Attach phone input filters (prevent letters)
+    attachPhoneInputFilters();
+    // Enhance country selects with flag icons when flag-icon and bootstrap-select are available
+    enhanceCountrySelectsWithFlags();
 });
+
+// Prevent letters and non-digit characters in phone inputs; keep cursor position
+function attachPhoneInputFilters() {
+    const phoneSelectors = ['#contactMobile', '#schedMobile'];
+    phoneSelectors.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (!el) return;
+        el.addEventListener('input', (e) => {
+            const start = el.selectionStart;
+            const cleaned = el.value.replace(/[^0-9]/g, '');
+            if (cleaned !== el.value) {
+                el.value = cleaned;
+                // restore cursor near end (best-effort)
+                el.setSelectionRange(Math.min(start - 1, el.value.length), Math.min(start - 1, el.value.length));
+            }
+        });
+    });
+}
+
+function enhanceCountrySelectsWithFlags() {
+    const mapping = {
+        '+1':'us','+7':'ru','+20':'eg','+27':'za','+30':'gr','+31':'nl','+32':'be','+33':'fr','+34':'es','+36':'hu','+39':'it','+40':'ro','+41':'ch','+43':'at','+44':'gb','+45':'dk','+46':'se','+47':'no','+48':'pl','+49':'de','+52':'mx','+53':'cu','+54':'ar','+55':'br','+56':'cl','+57':'co','+58':'ve','+60':'my','+61':'au','+62':'id','+63':'ph','+64':'nz','+65':'sg','+66':'th','+81':'jp','+82':'kr','+84':'vn','+86':'cn','+90':'tr','+91':'in','+92':'pk','+93':'af','+94':'lk','+95':'mm','+98':'ir','+350':'gi','+351':'pt','+352':'lu','+353':'ie','+354':'is','+355':'al','+356':'mt','+357':'cy','+358':'fi','+359':'bg','+370':'lt','+371':'lv','+372':'ee','+373':'md','+374':'am','+375':'by','+376':'ad','+377':'mc','+378':'sm','+380':'ua','+381':'rs','+385':'hr','+386':'si','+387':'ba','+389':'mk','+420':'cz','+421':'sk'
+    };
+
+    document.querySelectorAll('.country-select').forEach(select => {
+        select.querySelectorAll('option').forEach(opt => {
+            const val = opt.value;
+            const iso = mapping[val] || mapping['+' + val.replace(/\D/g,'')];
+            if (iso) {
+                // Use FlagCDN image tiles for rectangular flags which render consistently across platforms.
+                // FlagCDN image URL format: https://flagcdn.com/24x18/{iso}.png  (iso must be lowercase)
+                const imgUrl = `https://flagcdn.com/24x18/${iso.toLowerCase()}.png`;
+                // data-content is used by bootstrap-select to render HTML inside options and the selected button
+                opt.setAttribute('data-content', `<img src="${imgUrl}" class="flag-img" alt="${iso} flag"> ${opt.textContent}`);
+            }
+        });
+    });
+
+    // initialize bootstrap-select if available
+    if (window.jQuery && jQuery && jQuery.fn && jQuery.fn.selectpicker) {
+        jQuery('.country-select').selectpicker({ liveSearch: true, size: 6 });
+    }
+}
 
 // Parallax effect for hero section
 window.addEventListener('scroll', () => {
@@ -395,7 +512,8 @@ function initModal() {
 
 // Scrollspy active nav link
 function updateActiveNavLink() {
-    const sections = ['home','services','pricing','expertise','about','testimonials','faq','contact'];
+    // sections must be listed in the same top-to-bottom order they appear in the DOM
+    const sections = ['home','pricing','services','testimonials','faq','about','newsletter','expertise','contact'];
     const links = document.querySelectorAll('.nav-menu a');
     const fromTop = window.scrollY + 120;
     let activeId = sections[0];
