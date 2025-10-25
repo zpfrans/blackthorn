@@ -288,6 +288,11 @@ function enhanceCountrySelectsWithFlags() {
                 const imgUrl = `https://flagcdn.com/24x18/${iso.toLowerCase()}.png`;
                 // data-content is used by bootstrap-select to render HTML inside options and the selected button
                 opt.setAttribute('data-content', `<img src="${imgUrl}" class="flag-img" alt="${iso} flag"> ${opt.textContent}`);
+            } else {
+                // Fallback: inline SVG (generic globe) encoded at runtime so every option still shows an image-like placeholder
+                const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='24' height='18' viewBox='0 0 24 18'><rect width='24' height='18' fill='#cfd8dc'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='10' fill='#263238'>🌐</text></svg>`;
+                const imgUrl = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+                opt.setAttribute('data-content', `<img src="${imgUrl}" class="flag-img" alt="flag"> ${opt.textContent}`);
             }
         });
     });
